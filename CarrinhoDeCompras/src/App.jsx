@@ -12,9 +12,9 @@ function App() {
 
         <Route path="/pagamento" element={<Pagamento />} />
 
-        <Route path="/sucesso" element={<Sucesso />} />
+        <Route path="/sucesso/:pedidoId" element={<Sucesso />} />
 
-        <Route path="/falha" element={<Falha />} />
+        <Route path="/falha/:pedidoId" element={<Falha />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
