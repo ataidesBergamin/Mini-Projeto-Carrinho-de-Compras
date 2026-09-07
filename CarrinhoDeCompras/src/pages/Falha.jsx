@@ -1,8 +1,8 @@
-function Golpe() {
+function Falha() {
   return (
     <>
-      <h1>Foi identificada uma tentativa de golpe</h1>
+      <h1>tentativa de golpe</h1>
     </>
   );
 }
-export default Golpe;
+export default Falha;
