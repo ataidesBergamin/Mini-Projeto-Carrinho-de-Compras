@@ -1,11 +1,16 @@
-import Itens from "../components/ItemCarrinho";
-import Total from "../components/ResumoCompra";
+import ItemCarrinho from "../components/ItemCarrinho";
+import ResumoCompra from "../components/ResumoCompra";
+import produtos from "../data/produtos";
 
 function Carrinho() {
   return (
     <>
-      <Itens></Itens>
-      <Total></Total>
+      <h2>Itens no seu Carrinho</h2>
+
+      {produtos.map((produto) => (
+        <ItemCarrinho key={produto.id} produto={produto} />
+      ))}
+      <ResumoCompra produtos={produtos} />
     </>
   );
 }

@@ -1,6 +1,4 @@
-import produtos from "../data/produtos";
-
-function Total() {
+function ResumoCompra({ produtos }) {
   const total = produtos.reduce((acumulador, produto) => {
     return acumulador + produto.preco * produto.quantidade;
   }, 0);
@@ -28,4 +26,4 @@ function Total() {
     </>
   );
 }
-export default Total;
+export default ResumoCompra;
