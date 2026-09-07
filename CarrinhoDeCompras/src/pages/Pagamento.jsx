@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Botao from "../components/Botao";
-import { validarSegurancaCartao } from "../utils/pagamento";
+import { usePagamento } from "../hooks/usePagamento.js";
 
 const cartaoSchema = z.object({
   nomeTitular: z
@@ -14,10 +13,7 @@ const cartaoSchema = z.object({
   numeroCartao: z
     .string()
     .min(1, "O número do cartão é obrigatório")
-    .regex(/^[0-9]{16}$/, "Insira exatamente 16 dígitos numéricos")
-    .refine((val) => validarSegurancaCartao(val), {
-      message: "Transação recusada: tentativa de golpe detectada.",
-    }),
+    .regex(/^[0-9]{16}$/, "Insira exatamente 16 dígitos numéricos"),
 
   validade: z
     .string()
@@ -31,7 +27,7 @@ const cartaoSchema = z.object({
 });
 
 function Pagamento() {
-  const navigate = useNavigate();
+  const { processarPagamento, processando } = usePagamento();
 
   const {
     register,
@@ -41,14 +37,8 @@ function Pagamento() {
     resolver: zodResolver(cartaoSchema),
   });
 
-  // Função disparada apenas se todos os campos passarem na validação
   const aoEnviar = (dados) => {
-    console.log("Dados do Cartão Enviados:", dados);
-
-    // Simula uma resposta de sucesso da API e gera um ID de pedido fake
-    const pedidoIdFake = Math.floor(Math.random() * 90000) + 10000;
-
-    navigate(`/sucesso/${pedidoIdFake}`);
+    processarPagamento(dados);
   };
 
   return (
@@ -63,7 +53,8 @@ function Pagamento() {
           <label>Nome Impresso no Cartão</label>
           <input
             type="text"
-            {...register("nomeTitular", { required: "O nome é obrigatório" })}
+            disabled={processando}
+            {...register("nomeTitular")}
           />
           {errors.nomeTitular && (
             <span style={{ color: "red", fontSize: "12px" }}>
@@ -74,7 +65,12 @@ function Pagamento() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <label>Número do Cartão</label>
-          <input type="text" maxLength="16" {...register("numeroCartao")} />
+          <input
+            type="text"
+            maxLength="16"
+            disabled={processando}
+            {...register("numeroCartao")}
+          />
           {errors.numeroCartao && (
             <span style={{ color: "red", fontSize: "12px" }}>
               {errors.numeroCartao.message}
@@ -89,6 +85,7 @@ function Pagamento() {
               type="text"
               placeholder="12/29"
               maxLength="5"
+              disabled={processando}
               {...register("validade")}
             />
             {errors.validade && (
@@ -100,7 +97,12 @@ function Pagamento() {
 
           <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
             <label>CVV</label>
-            <input type="text" maxLength="3" {...register("cvv")} />
+            <input
+              type="text"
+              maxLength="3"
+              disabled={processando}
+              {...register("cvv")}
+            />
             {errors.cvv && (
               <span style={{ color: "red", fontSize: "12px" }}>
                 {errors.cvv.message}
@@ -109,7 +111,9 @@ function Pagamento() {
           </div>
         </div>
 
-        <Botao type="submit">Pagar Agora</Botao>
+        <Botao type="submit" disabled={processando}>
+          {processando ? "Processando Pagamento..." : "Pagar Agora"}
+        </Botao>
       </form>
     </div>
   );
