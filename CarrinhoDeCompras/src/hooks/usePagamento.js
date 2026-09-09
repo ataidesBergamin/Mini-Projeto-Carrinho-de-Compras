@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validarSegurancaCartao } from "../utils/pagamento";
+import produtos from "../data/produtos";
 
 export function usePagamento() {
   const [processando, setProcessando] = useState(false);
@@ -33,7 +34,8 @@ export function usePagamento() {
       });
 
       // Se a Promise resolveu com sucesso, manda para a rota dinâmica de sucesso
-      navigate(`/sucesso/${respostaApi.id}`);
+      // No momento do sucesso, envie o 'state' com os produtos
+      navigate(`/sucesso/${respostaApi.id}`, { state: { produtos: produtos } });
     } catch (err) {
       setErro(err.message);
 
