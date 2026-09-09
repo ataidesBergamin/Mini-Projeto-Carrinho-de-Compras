@@ -3,6 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Botao from "../components/Botao";
 import { usePagamento } from "../hooks/usePagamento.js";
+import ResumoCompra from "../components/ResumoCompra.jsx";
+import produtos from "../data/produtos";
 
 const cartaoSchema = z.object({
   nomeTitular: z
@@ -42,97 +44,100 @@ function Pagamento() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px" }}>
-      <h2>Cadastro do Cartão de Crédito</h2>
+    <>
+      <ResumoCompra produtos={produtos} />
+      <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px" }}>
+        <h2>Cadastro do Cartão de Crédito</h2>
 
-      <form
-        onSubmit={handleSubmit(aoEnviar)}
-        style={{ display: "flex", flexDirection: "column", gap: "15px" }}
-      >
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <label>Nome Impresso no Cartão</label>
-          <input
-            type="text"
-            disabled={processando}
-            {...register("nomeTitular")}
-          />
-          {errors.nomeTitular && (
-            <span style={{ color: "red", fontSize: "12px" }}>
-              {errors.nomeTitular.message}
-            </span>
-          )}
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <label>Número do Cartão</label>
-          <input
-            type="text"
-            maxLength="19"
-            disabled={processando}
-            {...register("numeroCartao", {
-              setValueAs: (valor) => valor.replace(/\s/g, ""),
-              onChange: (evento) => {
-                let valor = evento.target.value;
-
-                // Remove tudo que não for número
-                valor = valor.replace(/\D/g, "");
-
-                // Limita aos 16 dígitos
-                valor = valor.slice(0, 16);
-
-                // Insere espaço a cada 4 números
-                valor = valor.replace(/(\d{4})(?=\d)/g, "$1 ");
-
-                // Atualiza o valor exibido no input
-                evento.target.value = valor;
-              },
-            })}
-          />
-          {errors.numeroCartao && (
-            <span style={{ color: "red", fontSize: "12px" }}>
-              {errors.numeroCartao.message}
-            </span>
-          )}
-        </div>
-
-        <div style={{ display: "flex", gap: "10px" }}>
-          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-            <label>Validade (MM/AA)</label>
+        <form
+          onSubmit={handleSubmit(aoEnviar)}
+          style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+        >
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label>Nome Impresso no Cartão</label>
             <input
               type="text"
-              placeholder="12/29"
-              maxLength="5"
               disabled={processando}
-              {...register("validade")}
+              {...register("nomeTitular")}
             />
-            {errors.validade && (
+            {errors.nomeTitular && (
               <span style={{ color: "red", fontSize: "12px" }}>
-                {errors.validade.message}
+                {errors.nomeTitular.message}
               </span>
             )}
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-            <label>CVV</label>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label>Número do Cartão</label>
             <input
               type="text"
-              maxLength="3"
+              maxLength="19"
               disabled={processando}
-              {...register("cvv")}
+              {...register("numeroCartao", {
+                setValueAs: (valor) => valor.replace(/\s/g, ""),
+                onChange: (evento) => {
+                  let valor = evento.target.value;
+
+                  // Remove tudo que não for número
+                  valor = valor.replace(/\D/g, "");
+
+                  // Limita aos 16 dígitos
+                  valor = valor.slice(0, 16);
+
+                  // Insere espaço a cada 4 números
+                  valor = valor.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+                  // Atualiza o valor exibido no input
+                  evento.target.value = valor;
+                },
+              })}
             />
-            {errors.cvv && (
+            {errors.numeroCartao && (
               <span style={{ color: "red", fontSize: "12px" }}>
-                {errors.cvv.message}
+                {errors.numeroCartao.message}
               </span>
             )}
           </div>
-        </div>
 
-        <Botao type="submit" disabled={processando}>
-          {processando ? "Processando Pagamento..." : "Pagar Agora"}
-        </Botao>
-      </form>
-    </div>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <label>Validade (MM/AA)</label>
+              <input
+                type="text"
+                placeholder="12/29"
+                maxLength="5"
+                disabled={processando}
+                {...register("validade")}
+              />
+              {errors.validade && (
+                <span style={{ color: "red", fontSize: "12px" }}>
+                  {errors.validade.message}
+                </span>
+              )}
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <label>CVV</label>
+              <input
+                type="text"
+                maxLength="3"
+                disabled={processando}
+                {...register("cvv")}
+              />
+              {errors.cvv && (
+                <span style={{ color: "red", fontSize: "12px" }}>
+                  {errors.cvv.message}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <Botao type="submit" disabled={processando}>
+            {processando ? "Processando Pagamento..." : "Pagar Agora"}
+          </Botao>
+        </form>
+      </div>
+    </>
   );
 }
 
