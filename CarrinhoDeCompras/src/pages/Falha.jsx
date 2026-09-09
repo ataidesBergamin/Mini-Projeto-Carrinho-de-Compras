@@ -7,7 +7,7 @@ function Falha() {
     <>
       <h1>tentativa de golpe</h1>
       <AlertaGolpe
-        tipo="vermelho"
+        tipo="amarelo"
         mensagem="Possível tentativa de golpe detectada!"
       />
       <Link to="/pagamento" style={{ textDecoration: "none" }}>
