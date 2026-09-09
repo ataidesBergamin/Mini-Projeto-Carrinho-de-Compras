@@ -67,9 +67,26 @@ function Pagamento() {
           <label>Número do Cartão</label>
           <input
             type="text"
-            maxLength="16"
+            maxLength="19"
             disabled={processando}
-            {...register("numeroCartao")}
+            {...register("numeroCartao", {
+              setValueAs: (valor) => valor.replace(/\s/g, ""),
+              onChange: (evento) => {
+                let valor = evento.target.value;
+
+                // Remove tudo que não for número
+                valor = valor.replace(/\D/g, "");
+
+                // Limita aos 16 dígitos
+                valor = valor.slice(0, 16);
+
+                // Insere espaço a cada 4 números
+                valor = valor.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+                // Atualiza o valor exibido no input
+                evento.target.value = valor;
+              },
+            })}
           />
           {errors.numeroCartao && (
             <span style={{ color: "red", fontSize: "12px" }}>

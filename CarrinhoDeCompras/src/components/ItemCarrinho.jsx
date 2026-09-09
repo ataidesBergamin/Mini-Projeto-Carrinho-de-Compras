@@ -1,20 +1,26 @@
 function ItemCarrinho({ produto }) {
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "10px" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
         <div
           key={produto.id}
           style={{
             border: "1px solid #00c13d",
             borderRadius: "8px",
-            padding: "15px",
+            padding: "10px",
             backgroundColor: "#f0e8e8",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+            }}
+          >
             <h3 style={{ margin: "0 0 5px 0", fontSize: "18px" }}>
               {produto.nome}
             </h3>
