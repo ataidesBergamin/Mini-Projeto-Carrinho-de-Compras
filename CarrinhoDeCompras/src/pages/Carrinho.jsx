@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Carrinho() {
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Itens no seu Carrinho</h2>
+      <h1>Itens no seu Carrinho</h1>
 
       {produtos.map((produto) => (
         <ItemCarrinho key={produto.id} produto={produto} />
