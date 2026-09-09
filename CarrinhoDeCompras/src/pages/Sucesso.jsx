@@ -18,14 +18,15 @@ function Sucesso() {
             display: "flex",
             justifyContent: "center",
             flexDirection: "column",
+            padding: "0px 20px",
           }}
         >
           <div
             style={{
               padding: "10px",
-              backgroundColor: "#ffffffee",
+              backgroundColor: "#f4f4f4ee",
               margin: "10px 0px",
-              border: "2px solid #069636",
+              border: "3px solid #069636",
               borderRadius: "10px",
             }}
           >
