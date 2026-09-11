@@ -1,0 +1,45 @@
+.falha {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+}
+.falha-conteudo {
+  width: 100%;
+  max-width: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.falha h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+.falha-acoes {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 10px;
+}
+.falha-acoes a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+/* ----------------------------- */
+@media (max-width: 600px) {
+  .falha {
+    padding: 20px 15px;
+  }
+  .falha h1 {
+    font-size: 24px;
+  }
+  .falha-acoes {
+    max-width: 100%;
+  }
+}
