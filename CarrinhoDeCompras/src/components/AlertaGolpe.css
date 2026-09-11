@@ -123,3 +123,34 @@
     opacity: 0.35;
   }
 }
+/* ------------------------------- */
+@media (max-width: 600px) {
+  .alerta-container {
+    gap: 20px;
+    padding: 20px 15px;
+  }
+  .triangulo {
+    width: 170px;
+    height: 150px;
+  }
+  .triangulo::before {
+    width: 145px;
+    height: 130px;
+  }
+  .exclamacao {
+    font-size: 70px;
+  }
+  .alerta-texto {
+    max-width: 100%;
+    padding: 15px;
+  }
+  .alerta-texto h2 {
+    font-size: 22px;
+  }
+  .alerta-texto p {
+    font-size: 17px;
+  }
+  .aviso {
+    font-size: 14px;
+  }
+}
