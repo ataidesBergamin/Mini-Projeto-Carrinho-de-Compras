@@ -1,190 +1,124 @@
 .alerta-container {
-  min-height: 100vh;
-
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
-
   gap: 30px;
-
   font-family: Arial, Helvetica, sans-serif;
-
   background: #111;
 }
-
-/* =========================
-   TRIÂNGULO
-========================= */
-
+/* TRIÂNGULO */
 .alerta-icone {
   animation: pulsar 1.2s infinite ease-in-out;
 }
-
 .triangulo {
   width: 220px;
   height: 190px;
-
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   position: relative;
 }
-
 /* Cria o espaço interno */
 .triangulo::before {
   content: "";
-
   position: absolute;
-
   width: 190px;
   height: 165px;
-
   top: 14px;
-
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
-
 /* Exclamação */
-
 .exclamacao {
   position: relative;
-
   z-index: 2;
-
   font-size: 95px;
-
   font-weight: bold;
-
   margin-top: 35px;
-
   line-height: 1;
 }
-
-/* =========================
-   ALERTA VERMELHO
-========================= */
-
+/* ALERTA VERMELHO */
 .vermelho .triangulo {
   background: #f0141f;
-
   box-shadow:
     0 0 15px #f0141f,
     0 0 35px rgba(240, 20, 31, 0.7),
     0 0 70px rgba(240, 20, 31, 0.4);
 }
-
 .vermelho .triangulo::before {
   background: #111;
 }
-
 .vermelho .exclamacao {
   color: white;
-
   text-shadow:
     0 0 10px white,
     0 0 20px rgba(255, 255, 255, 0.5);
 }
-
 .vermelho h2 {
   color: #ff2630;
 }
-
-/* =========================
-   ALERTA AMARELO
-========================= */
-
+/* ALERTA AMARELO */
 .amarelo .triangulo {
   background: #ffc107;
-
   box-shadow:
     0 0 15px #ffc107,
     0 0 35px rgba(255, 193, 7, 0.7),
     0 0 70px rgba(255, 193, 7, 0.4);
 }
-
 .amarelo .triangulo::before {
   background: #111;
 }
-
 .amarelo .exclamacao {
   color: #ffc107;
-
   text-shadow: 0 0 10px #ffc107;
 }
-
 .amarelo h2 {
   color: #ffc107;
 }
-
-/* =========================
-   TEXTO
-========================= */
-
+/* TEXTO */
 .alerta-texto {
   text-align: center;
-
   max-width: 550px;
-
   padding: 25px;
 }
-
 .alerta-texto h2 {
   margin-bottom: 15px;
-
   font-size: 28px;
-
   animation: piscarTexto 1.2s infinite;
 }
-
 .alerta-texto p {
   color: white;
-
   font-size: 20px;
-
   font-weight: bold;
-
   margin-bottom: 15px;
 }
-
 .aviso {
   color: #aaa;
-
   font-size: 16px;
 }
-
-/* =========================
-   ANIMAÇÕES
-========================= */
-
+/* ANIMAÇÕES */
 @keyframes pulsar {
   0% {
     transform: scale(1);
     opacity: 1;
   }
-
   50% {
     transform: scale(1.08);
     opacity: 0.8;
   }
-
   100% {
     transform: scale(1);
     opacity: 1;
   }
 }
-
 @keyframes piscarTexto {
   0%,
   100% {
     opacity: 1;
   }
-
   50% {
     opacity: 0.35;
   }

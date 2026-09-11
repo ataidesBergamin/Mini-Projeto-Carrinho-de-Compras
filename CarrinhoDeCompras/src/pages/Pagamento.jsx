@@ -5,6 +5,7 @@ import Botao from "../components/Botao";
 import { usePagamento } from "../hooks/usePagamento.js";
 import ResumoCompra from "../components/ResumoCompra.jsx";
 import produtos from "../data/produtos";
+import "./Pagamento.css";
 
 const cartaoSchema = z.object({
   nomeTitular: z
@@ -45,98 +46,134 @@ function Pagamento() {
 
   return (
     <>
-      <ResumoCompra produtos={produtos} />
-      <div style={{ maxWidth: "400px", margin: "0 auto", padding: "20px" }}>
-        <h2>Cadastro do Cartão de Crédito</h2>
-
-        <form
-          onSubmit={handleSubmit(aoEnviar)}
-          style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+      <main className="pagamento">
+        <section className="resumo-pagamento" aria-labelledby="titulo-resumo">
+          <h2 id="titulo-resumo">Resumo da Compra</h2>
+          <ResumoCompra produtos={produtos} />
+        </section>
+        <section
+          className="formulario-pagamento"
+          aria-labelledby="titulo-pagamento"
         >
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <label>Nome Impresso no Cartão</label>
-            <input
-              type="text"
-              disabled={processando}
-              {...register("nomeTitular")}
-            />
-            {errors.nomeTitular && (
-              <span style={{ color: "red", fontSize: "12px" }}>
-                {errors.nomeTitular.message}
-              </span>
-            )}
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <label>Número do Cartão</label>
-            <input
-              type="text"
-              maxLength="19"
-              disabled={processando}
-              {...register("numeroCartao", {
-                setValueAs: (valor) => valor.replace(/\s/g, ""),
-                onChange: (evento) => {
-                  let valor = evento.target.value;
-
-                  // Remove tudo que não for número
-                  valor = valor.replace(/\D/g, "");
-
-                  // Limita aos 16 dígitos
-                  valor = valor.slice(0, 16);
-
-                  // Insere espaço a cada 4 números
-                  valor = valor.replace(/(\d{4})(?=\d)/g, "$1 ");
-
-                  // Atualiza o valor exibido no input
-                  evento.target.value = valor;
-                },
-              })}
-            />
-            {errors.numeroCartao && (
-              <span style={{ color: "red", fontSize: "12px" }}>
-                {errors.numeroCartao.message}
-              </span>
-            )}
-          </div>
-
-          <div style={{ display: "flex", gap: "10px" }}>
-            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-              <label>Validade (MM/AA)</label>
+          <h1 id="titulo-pagamento">Cadastro do Cartão de Crédito</h1>
+          <form onSubmit={handleSubmit(aoEnviar)}>
+            <div className="campo">
+              <label htmlFor="nomeTitular">Nome impresso no cartão</label>
               <input
+                id="nomeTitular"
                 type="text"
-                placeholder="12/29"
-                maxLength="5"
+                autoComplete="cc-name"
                 disabled={processando}
-                {...register("validade")}
+                aria-invalid={errors.nomeTitular ? "true" : "false"}
+                aria-describedby={errors.nomeTitular ? "erro-nome" : undefined}
+                {...register("nomeTitular")}
               />
-              {errors.validade && (
-                <span style={{ color: "red", fontSize: "12px" }}>
-                  {errors.validade.message}
+              {errors.nomeTitular && (
+                <span id="erro-nome" className="mensagem-erro" role="alert">
+                  {errors.nomeTitular.message}
+                </span>
+              )}
+            </div>
+            <div className="campo">
+              <label htmlFor="numeroCartao">Número do cartão</label>
+
+              <input
+                id="numeroCartao"
+                type="text"
+                inputMode="numeric"
+                autoComplete="cc-number"
+                maxLength="19"
+                disabled={processando}
+                aria-invalid={errors.numeroCartao ? "true" : "false"}
+                aria-describedby={
+                  errors.numeroCartao ? "erro-cartao" : undefined
+                }
+                {...register("numeroCartao", {
+                  setValueAs: (valor) => valor.replace(/\s/g, ""),
+
+                  onChange: (evento) => {
+                    let valor = evento.target.value;
+
+                    // Remove tudo que não for número
+                    valor = valor.replace(/\D/g, "");
+
+                    // Limita aos 16 dígitos
+                    valor = valor.slice(0, 16);
+
+                    // Insere espaço a cada 4 números
+                    valor = valor.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+                    evento.target.value = valor;
+                  },
+                })}
+              />
+
+              {errors.numeroCartao && (
+                <span id="erro-cartao" className="mensagem-erro" role="alert">
+                  {errors.numeroCartao.message}
                 </span>
               )}
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-              <label>CVV</label>
-              <input
-                type="text"
-                maxLength="3"
-                disabled={processando}
-                {...register("cvv")}
-              />
-              {errors.cvv && (
-                <span style={{ color: "red", fontSize: "12px" }}>
-                  {errors.cvv.message}
-                </span>
-              )}
-            </div>
-          </div>
+            <div className="dados-cartao">
+              <div className="campo">
+                <label htmlFor="validade">Validade (MM/AA)</label>
 
-          <Botao type="submit" disabled={processando}>
-            {processando ? "Processando Pagamento..." : "Pagar Agora"}
-          </Botao>
-        </form>
-      </div>
+                <input
+                  id="validade"
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="12/29"
+                  maxLength="5"
+                  autoComplete="cc-exp"
+                  disabled={processando}
+                  aria-invalid={errors.validade ? "true" : "false"}
+                  aria-describedby={
+                    errors.validade ? "erro-validade" : undefined
+                  }
+                  {...register("validade")}
+                />
+
+                {errors.validade && (
+                  <span
+                    id="erro-validade"
+                    className="mensagem-erro"
+                    role="alert"
+                  >
+                    {errors.validade.message}
+                  </span>
+                )}
+              </div>
+
+              <div className="campo">
+                <label htmlFor="cvv">CVV</label>
+
+                <input
+                  id="cvv"
+                  type="text"
+                  inputMode="numeric"
+                  maxLength="3"
+                  autoComplete="cc-csc"
+                  disabled={processando}
+                  aria-invalid={errors.cvv ? "true" : "false"}
+                  aria-describedby={errors.cvv ? "erro-cvv" : undefined}
+                  {...register("cvv")}
+                />
+
+                {errors.cvv && (
+                  <span id="erro-cvv" className="mensagem-erro" role="alert">
+                    {errors.cvv.message}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <Botao type="submit" disabled={processando}>
+              {processando ? "Processando Pagamento..." : "Pagar Agora"}
+            </Botao>
+          </form>
+        </section>
+      </main>
     </>
   );
 }

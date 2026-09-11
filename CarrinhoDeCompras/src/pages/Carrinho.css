@@ -1,0 +1,41 @@
+.carrinho {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 20px;
+}
+.carrinho-conteudo {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.carrinho h1 {
+  margin: 0 0 25px;
+  font-size: 30px;
+}
+.lista-carrinho {
+  display: flex;
+  flex-direction: column;
+}
+.carrinho-acoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+/* -------------------------- */
+@media (max-width: 600px) {
+  .carrinho {
+    padding: 20px 15px;
+  }
+  .carrinho h1 {
+    font-size: 24px;
+  }
+  .carrinho-acoes {
+    justify-content: stretch;
+  }
+  .carrinho-acoes a {
+    width: 100%;
+  }
+  .carrinho-acoes button {
+    width: 100%;
+  }
+}

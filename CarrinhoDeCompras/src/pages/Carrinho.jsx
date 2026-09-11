@@ -1,3 +1,4 @@
+import "./Carrinho.css";
 import ItemCarrinho from "../components/ItemCarrinho";
 import ResumoCompra from "../components/ResumoCompra";
 import produtos from "../data/produtos";
@@ -6,19 +7,24 @@ import { Link } from "react-router-dom";
 
 function Carrinho() {
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Itens no seu Carrinho</h1>
+    <main className="carrinho">
+      <section className="carrinho-conteudo" aria-labelledby="titulo-carrinho">
+        <h1 id="titulo-carrinho">Itens no seu carrinho</h1>
+        <div className="lista-carrinho">
+          {produtos.map((produto) => (
+            <ItemCarrinho key={produto.id} produto={produto} />
+          ))}
+        </div>
 
-      {produtos.map((produto) => (
-        <ItemCarrinho key={produto.id} produto={produto} />
-      ))}
+        <ResumoCompra produtos={produtos} />
 
-      <ResumoCompra produtos={produtos} />
-
-      <Link to="/pagamento" style={{ textDecoration: "none" }}>
-        <Botao>Ir Para Pagamento</Botao>
-      </Link>
-    </div>
+        <div className="carrinho-acoes">
+          <Link to="/pagamento">
+            <Botao>Ir Para Pagamento</Botao>
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
 
