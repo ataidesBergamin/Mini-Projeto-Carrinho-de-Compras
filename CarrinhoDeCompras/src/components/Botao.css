@@ -1,0 +1,39 @@
+.botao {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0066cc;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+/* ------------------------------ */
+.botao:hover:not(:disabled) {
+  background-color: #0052a3;
+}
+/* ------------------------------ */
+.botao:active:not(:disabled) {
+  transform: scale(0.98);
+}
+/* ------------------------------ */
+.botao:focus-visible {
+  outline: 3px solid #80bdff;
+  outline-offset: 3px;
+}
+/* ------------------------------- */
+.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* ------------------------------- */
+@media (max-width: 600px) {
+  .botao {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
