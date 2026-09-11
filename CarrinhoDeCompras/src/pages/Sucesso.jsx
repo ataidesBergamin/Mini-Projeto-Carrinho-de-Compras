@@ -1,3 +1,4 @@
+import "./Sucesso.css";
 import Botao from "../components/Botao";
 import { Link, useLocation } from "react-router-dom";
 
@@ -7,38 +8,26 @@ function Sucesso() {
   const produtos = location.state?.produtos || [];
 
   return (
-    <div>
-      <h1>Compra Corfirmada!</h1>
-      <h2>Seu pagamento foi aprovado.</h2>
-      <h3>Itens da Compra:</h3>
-      {produtos.map((produto) => (
-        <div
-          key={produto.id}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            padding: "0px 20px",
-          }}
-        >
-          <div
-            style={{
-              padding: "10px",
-              backgroundColor: "#f4f4f4ee",
-              margin: "10px 0px",
-              border: "3px solid #069636",
-              borderRadius: "10px",
-            }}
-          >
-            <strong>{produto.nome}</strong> - Quantidade: {produto.quantidade}
-          </div>
+    <main className="sucesso">
+      <section className="sucesso-conteudo" aria-labelledby="titulo-sucesso">
+        <h1 id="titulo-sucesso">Compra Corfirmada!</h1>
+        <h2>Seu pagamento foi aprovado.</h2>
+        <h3>Itens da Compra:</h3>
+        <div className="itens-sucesso">
+          {produtos.map((produto) => (
+            <article key={produto.id} className="item-sucesso">
+              <strong>{produto.nome}</strong>
+              <span>Quantidade: {produto.quantidade}</span>
+            </article>
+          ))}
         </div>
-      ))}
-
-      <Link to="/carrinho" style={{ textDecoration: "none" }}>
-        <Botao>Retornar ao Carrinho</Botao>
-      </Link>
-    </div>
+        <div className="sucesso-acoes">
+          <Link to="/carrinho">
+            <Botao>Retornar ao Carrinho</Botao>
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
 export default Sucesso;
