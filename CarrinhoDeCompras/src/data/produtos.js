@@ -35,7 +35,7 @@ const produtos = [
     preco: 119.0,
     quantidade: 1,
   },
-  /*   {
+  {
     id: 7,
     nome: "Zombicide: 2ª Edição",
     preco: 549.0,
@@ -58,6 +58,6 @@ const produtos = [
     nome: "Pandemic",
     preco: 250.0,
     quantidade: 1,
-  }, */
+  },
 ];
 export default produtos;
