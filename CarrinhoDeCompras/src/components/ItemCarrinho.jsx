@@ -1,4 +1,4 @@
-import "./ItemCarrinho.css";
+import "../style/ItemCarrinho.css";
 
 function ItemCarrinho({ produto }) {
   const subtotal = produto.preco * produto.quantidade;

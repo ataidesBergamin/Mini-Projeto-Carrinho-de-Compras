@@ -5,13 +5,14 @@ import Botao from "../components/Botao";
 import { usePagamento } from "../hooks/usePagamento.js";
 import ResumoCompra from "../components/ResumoCompra.jsx";
 import produtos from "../data/produtos";
-import "./Pagamento.css";
+import "../style/Pagamento.css";
 
 const cartaoSchema = z.object({
   nomeTitular: z
     .string()
     .min(1, "O nome é obrigatório")
-    .min(3, "O nome deve ter pelo menos 3 caracteres"),
+    .min(3, "O nome deve ter pelo menos 3 caracteres")
+    .regex(/^[A-Za-zÀ-ÿ\s]+$/, "O nome deve conter somente letras"),
 
   numeroCartao: z
     .string()
@@ -49,6 +50,14 @@ function Pagamento() {
       <main className="pagamento">
         <section className="resumo-pagamento" aria-labelledby="titulo-resumo">
           <h2 id="titulo-resumo">Resumo da Compra</h2>
+          <div>
+            {produtos.map((produto) => (
+              <article key={produto.id} className="item-resumo">
+                <strong>{produto.nome}</strong>
+                <span> -- Quantidade: {produto.quantidade}</span>
+              </article>
+            ))}
+          </div>
           <ResumoCompra produtos={produtos} />
         </section>
         <section
@@ -66,7 +75,13 @@ function Pagamento() {
                 disabled={processando}
                 aria-invalid={errors.nomeTitular ? "true" : "false"}
                 aria-describedby={errors.nomeTitular ? "erro-nome" : undefined}
-                {...register("nomeTitular")}
+                {...register("nomeTitular", {
+                  onChange: (evento) => {
+                    let valor = evento.target.value;
+                    valor = valor.replace(/[^A-Za-zÀ-ÿ\s]/g, "");
+                    evento.target.value = valor;
+                  },
+                })}
               />
               {errors.nomeTitular && (
                 <span id="erro-nome" className="mensagem-erro" role="alert">

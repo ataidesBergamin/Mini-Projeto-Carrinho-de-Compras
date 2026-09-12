@@ -1,4 +1,4 @@
-import "./AlertaGolpe.css";
+import "../style/AlertaGolpe.css";
 
 function AlertaGolpe({
   tipo = "vermelho",

@@ -1,4 +1,4 @@
-import "./Falha.css";
+import "../style/Falha.css";
 import { Link } from "react-router-dom";
 import AlertaGolpe from "../components/AlertaGolpe";
 import Botao from "../components/Botao";

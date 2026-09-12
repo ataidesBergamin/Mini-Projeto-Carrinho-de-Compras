@@ -1,4 +1,4 @@
-import "./Carrinho.css";
+import "../style/Carrinho.css";
 import ItemCarrinho from "../components/ItemCarrinho";
 import ResumoCompra from "../components/ResumoCompra";
 import produtos from "../data/produtos";
@@ -9,7 +9,7 @@ function Carrinho() {
   return (
     <main className="carrinho">
       <section className="carrinho-conteudo" aria-labelledby="titulo-carrinho">
-        <h1 id="titulo-carrinho">Itens no seu carrinho</h1>
+        <h1 id="titulo-carrinho">Itens no seu carrinho de compras</h1>
         <div className="lista-carrinho">
           {produtos.map((produto) => (
             <ItemCarrinho key={produto.id} produto={produto} />

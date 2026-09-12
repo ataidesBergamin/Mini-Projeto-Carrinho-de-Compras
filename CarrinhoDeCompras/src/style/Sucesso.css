@@ -9,6 +9,13 @@
   margin: 0 auto;
   text-align: center;
 }
+.sucesso-conteudo h1 {
+  color: #04f153;
+}
+.sucesso-conteudo h2,
+.sucesso-conteudo h3 {
+  color: var(--cor-texto);
+}
 .sucesso h1 {
   margin-bottom: 25px;
 }
@@ -28,7 +35,7 @@
   gap: 15px;
   padding: 15px;
   background-color: #f4f4f4;
-  border: 3px solid #069636;
+  border: 2px solid #22cc0c;
   border-radius: 10px;
   text-align: left;
 }
