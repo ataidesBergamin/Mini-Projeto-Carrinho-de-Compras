@@ -1,4 +1,4 @@
-import "./Botao.css";
+import "../style/Botao.css";
 
 function Botao({ onClick, children, type = "button", disabled = false }) {
   return (

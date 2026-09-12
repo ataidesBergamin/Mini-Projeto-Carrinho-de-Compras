@@ -1,4 +1,4 @@
-import "./ResumoCompra.css";
+import "../style/ResumoCompra.css";
 
 function ResumoCompra({ produtos }) {
   const total = produtos.reduce((acumulador, produto) => {

@@ -1,4 +1,4 @@
-import "./Sucesso.css";
+import "../style/Sucesso.css";
 import Botao from "../components/Botao";
 import { Link, useLocation } from "react-router-dom";
 
