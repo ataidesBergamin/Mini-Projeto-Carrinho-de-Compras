@@ -21,14 +21,14 @@ const produtos = [
     id: 2,
     nome: "Dixit",
     preco: 229.0,
-    quantidade: 1,
+    quantidade: 2,
     img: dixit,
   },
   {
     id: 3,
     nome: "Ticket to Ride: Europa",
     preco: 349.9,
-    quantidade: 1,
+    quantidade: 3,
     img: ticketToRide,
   },
   {
