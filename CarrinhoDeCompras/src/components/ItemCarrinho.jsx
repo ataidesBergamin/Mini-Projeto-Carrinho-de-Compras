@@ -5,12 +5,17 @@ function ItemCarrinho({ produto }) {
 
   return (
     <article className="item-carrinho">
-      <div className="item-carrinho-info">
-        <h2>{produto.nome}</h2>
-        <p>
-          <span>Quantidade: </span>
-          {produto.quantidade}
-        </p>
+      <div className="itens-conteiner">
+        <div className="conteiner-img">
+          <img src={produto.img} />
+        </div>
+        <div className="item-carrinho-info">
+          <h2>{produto.nome}</h2>
+          <p>
+            <span>Quantidade: </span>
+            {produto.quantidade}
+          </p>
+        </div>
       </div>
       <div className="item-carrinho-valores">
         <p>

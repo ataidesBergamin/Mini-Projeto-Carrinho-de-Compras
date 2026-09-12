@@ -1,5 +1,5 @@
 .item-carrinho {
-  background-color: #f0e8e8;
+  background-color: #ffffff;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -17,6 +17,14 @@
   gap: 5px;
   min-width: 0;
   align-items: flex-start;
+}
+.itens-conteiner {
+  display: flex;
+  align-items: center;
+}
+.conteiner-img {
+  width: 110px;
+  height: 110px;
 }
 .item-carrinho-info h2 {
   margin: 0;
