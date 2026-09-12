@@ -29,7 +29,7 @@ Na tela de falha, a aplicação apresenta exatamente:
 
 > `tentativa de golpe`
 
-Seguido de um alerta de Possivel tentativa de golpe.
+Seguido de um alerta de Possível tentativa de golpe.
 
 ---
 
@@ -194,7 +194,7 @@ src/utils/pagamento.js
 A função verifica se o mesmo dígito aparece 16 vezes:
 
 ```javascript
-/^(\d){15}$/;
+/^(\d)\1{15}$/;
 ```
 
 Se todos forem iguais, o resultado é recusado.
@@ -209,7 +209,7 @@ Durante o processamento:
 - a interface informa que a compra está sendo processada;
 - após a conclusão, a aplicação navega para a tela de sucesso ou falha.
 
-Essa abordagem demonstra o uso de `Promise`, `async/await`, estado e navegação programática. A aplicação exibe `Processando compra…` e impede novos envios durante a espera, evitando assim a redundancia de envio do formulário.
+Essa abordagem demonstra o uso de `Promise`, `async/await`, estado e navegação programática. A aplicação exibe `Processando compra…` e impede novos envios durante a espera, evitando assim a redundância de envio do formulário.
 
 ### Sucesso
 
@@ -247,7 +247,7 @@ Foram aplicadas algumas práticas de acessibilidade:
 - `autoComplete` apropriado para os dados do cartão;
 - `inputMode="numeric"` nos campos numéricos.
 
-Sendo consoliado o HTML semântico, os rótulos associados, o foco visível e feedback acessível.
+Sendo consolidado o HTML semântico, os rótulos associados, o foco visível e feedback acessível.
 
 ---
 
@@ -520,13 +520,13 @@ Ter instalado:
 Clone o repositório:
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/ataidesBergamin/CarrinhoDeCompras
 ```
 
 Entre na pasta:
 
 ```bash
-cd NOME_DO_PROJETO
+cd CarrinhoDeCompras
 ```
 
 Instale as dependências:

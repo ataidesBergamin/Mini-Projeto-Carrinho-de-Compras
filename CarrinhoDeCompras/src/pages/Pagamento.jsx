@@ -186,7 +186,7 @@ function Pagamento() {
             </div>
 
             <Botao type="submit" disabled={processando}>
-              {processando ? "Processando Pagamento..." : "Pagar Agora"}
+              {processando ? "Processando compra..." : "Pagar Agora"}
             </Botao>
           </form>
         </section>

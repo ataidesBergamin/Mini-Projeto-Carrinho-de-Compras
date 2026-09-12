@@ -15,17 +15,12 @@ export function usePagamento() {
     try {
       const respostaApi = await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // Aqui geramos um ID de pedido fake
+          // Aqui gera um ID de pedido fake
           const pedidoIdFake = Math.floor(Math.random() * 90000) + 10000;
 
           if (!validarSegurancaCartao(dadosCartao.numeroCartao)) {
             reject(
               new Error("Transação recusada: tentativa de golpe detectada."),
-            );
-            // Simulação: se o CVV for "999", simulamos uma falha do banco para testes
-          } else if (dadosCartao.cvv === "999") {
-            reject(
-              new Error("Saldo insuficiente ou cartão bloqueado pelo banco."),
             );
           } else {
             resolve({ sucesso: true, id: pedidoIdFake });
