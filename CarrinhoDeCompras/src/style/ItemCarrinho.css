@@ -21,10 +21,21 @@
 .itens-conteiner {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .conteiner-img {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.container-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .item-carrinho-info h2 {
   margin: 0;
@@ -65,5 +76,16 @@
   .item-carrinho-valores {
     width: 100%;
     text-align: center;
+  }
+  .container-img {
+    width: 90px;
+  }
+  .item-carrinho-info h2 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 300px) {
+  .itens-conteiner {
+    flex-direction: column;
   }
 }

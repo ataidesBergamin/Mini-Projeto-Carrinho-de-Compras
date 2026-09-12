@@ -7,7 +7,7 @@ function ItemCarrinho({ produto }) {
     <article className="item-carrinho">
       <div className="itens-conteiner">
         <div className="conteiner-img">
-          <img src={produto.img} />
+          <img src={produto.img} alt={`Imagem ${produto.nome}`} />
         </div>
         <div className="item-carrinho-info">
           <h2>{produto.nome}</h2>

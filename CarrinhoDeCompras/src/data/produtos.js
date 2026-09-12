@@ -4,7 +4,7 @@ import ticketToRide from "../assets/ticket_to_ride_europa.png";
 import harmonies from "../assets/Harmonies.png";
 import azul from "../assets/azul.png";
 import explodingKittens from "../assets/Exploding_Kittens.jpg";
-import wyrmspan from "../assets/wyrmspan.pmg";
+import wyrmspan from "../assets/wyrmspan.png";
 import pandemic from "../assets/pandemic.png";
 import starWars from "../assets/star_wars_orla_exterior.png";
 import trio from "../assets/trio.png";
