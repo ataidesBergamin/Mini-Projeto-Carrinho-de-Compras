@@ -6,6 +6,7 @@ import { usePagamento } from "../hooks/usePagamento.js";
 import ResumoCompra from "../components/ResumoCompra.jsx";
 import produtos from "../data/produtos";
 import "../style/Pagamento.css";
+import Cabecalho from "../components/Cabecalho.jsx";
 
 const cartaoSchema = z.object({
   nomeTitular: z
@@ -47,6 +48,7 @@ function Pagamento() {
 
   return (
     <>
+      <Cabecalho></Cabecalho>
       <main className="pagamento">
         <section className="resumo-pagamento" aria-labelledby="titulo-resumo">
           <h2 id="titulo-resumo">Resumo da Compra</h2>

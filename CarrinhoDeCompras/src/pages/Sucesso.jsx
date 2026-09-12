@@ -1,6 +1,7 @@
 import "../style/Sucesso.css";
 import Botao from "../components/Botao";
 import { Link, useLocation } from "react-router-dom";
+import Cabecalho from "../components/Cabecalho";
 
 function Sucesso() {
   const location = useLocation();
@@ -9,6 +10,7 @@ function Sucesso() {
 
   return (
     <main className="sucesso">
+      <Cabecalho></Cabecalho>
       <section className="sucesso-conteudo" aria-labelledby="titulo-sucesso">
         <h1 id="titulo-sucesso">Compra Corfirmada!</h1>
         <h2>Seu pagamento foi aprovado.</h2>

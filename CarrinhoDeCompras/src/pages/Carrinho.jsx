@@ -4,10 +4,12 @@ import ResumoCompra from "../components/ResumoCompra";
 import produtos from "../data/produtos";
 import Botao from "../components/Botao";
 import { Link } from "react-router-dom";
+import Cabecalho from "../components/Cabecalho";
 
 function Carrinho() {
   return (
     <main className="carrinho">
+      <Cabecalho></Cabecalho>
       <section className="carrinho-conteudo" aria-labelledby="titulo-carrinho">
         <h1 id="titulo-carrinho">Itens no seu carrinho de compras</h1>
         <div className="lista-carrinho">

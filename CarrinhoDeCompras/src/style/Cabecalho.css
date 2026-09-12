@@ -1,0 +1,18 @@
+.cabecalho {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+.conteudo-cabecalho {
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.conteudo-cabecalho img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+}

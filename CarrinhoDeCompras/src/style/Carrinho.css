@@ -3,6 +3,7 @@
   box-sizing: border-box;
   padding: 30px 20px;
   text-align: center;
+  display: flex;
 }
 .carrinho-conteudo {
   width: 100%;
@@ -23,6 +24,11 @@
   margin-top: 20px;
 }
 /* -------------------------- */
+@media (max-width: 720px) {
+  .carrinho {
+    flex-direction: column;
+  }
+}
 @media (max-width: 600px) {
   .carrinho {
     padding: 20px 15px;
