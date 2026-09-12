@@ -1,11 +1,7 @@
-/* =========================
-   CONFIGURAÇÕES GLOBAIS
-========================= */
-
 :root {
   --cor-texto: #818181;
   --cor-titulo: #978d85;
-  --cor-fundo: #1a5255;
+  --cor-fundo: #111;
   --cor-borda: #ddd;
   --cor-destaque: #0066cc;
   --cor-erro: #b00020;
@@ -22,20 +18,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* =========================
-   RESET BÁSICO
-========================= */
-
 * {
   box-sizing: border-box;
 }
-
 html {
   width: 100%;
   min-height: 100%;
 }
-
 body {
   margin: 0;
 
@@ -46,20 +35,12 @@ body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
 }
-
-/* =========================
-   ROOT DO REACT
-========================= */
-
+/* --------------------------------------*/
 #root {
   width: 100%;
   min-height: 100vh;
 }
-
-/* =========================
-   TÍTULOS
-========================= */
-
+/* ------------------------------------- */
 h1 {
   color: var(--cor-titulo);
 }
@@ -73,34 +54,20 @@ h3,
 p {
   margin-top: 0;
 }
-
-/* =========================
-   ELEMENTOS
-========================= */
-
 img {
   max-width: 100%;
   height: auto;
 }
-
 button,
 input {
   font: inherit;
 }
-
-/* =========================
-   ACESSIBILIDADE
-========================= */
-
+/* ------------------------------------ */
 :focus-visible {
   outline: 3px solid var(--cor-destaque);
   outline-offset: 3px;
 }
-
-/* =========================
-   RESPONSIVIDADE GLOBAL
-========================= */
-
+/* ------------------------------------ */
 @media (max-width: 600px) {
   body {
     font-size: 16px;
